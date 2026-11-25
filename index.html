@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManasMitra - Cognitive Wellness & Memory Companion</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ACCESSIBILITY SKIP LINK -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- TOP STICKY NAVIGATION BAR -->
+  <header class="top-nav" role="banner">
+    <div class="nav-container">
+      <button id="nav-back-btn" class="nav-icon-btn" title="Go Back" aria-label="Go to previous screen">
+        <span class="nav-arrow" aria-hidden="true">&#8592;</span>
+        <span class="nav-btn-label">Back</span>
+      </button>
+
+      <div class="brand-block" role="button" tabindex="0" id="brand-home-btn" title="Go to Home" aria-label="ManasMitra Home">
+        <div class="logo-symbol" aria-hidden="true">🌱</div>
+        <div class="brand-text">
+          <span class="brand-title">ManasMitra</span>
+          <span class="brand-tagline">Cognitive Companion</span>
+        </div>
+      </div>
+
+      <div class="nav-right-actions">
+        <div id="db-status-badge" class="db-status-badge offline" title="Database Connection Status" role="status">
+          <span class="db-status-dot" aria-hidden="true">●</span>
+          <span id="db-status-text">Local Mode</span>
+        </div>
+
+        <button id="voice-assistant-btn" class="nav-voice-btn" title="Voice Assistant" aria-label="Activate voice assistant reading">
+          <span class="voice-icon" aria-hidden="true">🔊</span>
+          <span class="voice-label" id="voice-status-text">Voice On</span>
+        </button>
+
+        <button id="nav-chat-btn" class="nav-voice-btn" title="AI Companion Chat" aria-label="Open AI Companion Chat">
+          <span class="voice-icon" aria-hidden="true">💬</span>
+          <span class="voice-label">AI Chat</span>
+        </button>
+
+        <button id="nav-fwd-btn" class="nav-icon-btn" title="Go Forward" aria-label="Go to next screen">
+          <span class="nav-btn-label">Forward</span>
+          <span class="nav-arrow" aria-hidden="true">&#8594;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- VOICE ANNOUNCEMENT BANNER -->
+  <div id="voice-banner" class="voice-banner hidden" role="status" aria-live="polite">
+    <span class="voice-pulse-icon" aria-hidden="true">🗣️</span>
+    <span id="voice-speech-text" class="voice-banner-text">Speaking...</span>
+    <button id="voice-stop-btn" class="voice-stop-btn" aria-label="Stop speaking">Stop</button>
+  </div>
+
+  <!-- MAIN APPLICATION CONTAINER -->
+  <main id="main-content" class="app-main" role="main">
+
+    <!-- ==================== VIEW 1: WELCOME ==================== -->
+    <section id="view-welcome" class="app-view active" aria-labelledby="welcome-title">
+      <div class="welcome-card">
+        <div class="welcome-badge">Elderly-First Wellness Platform</div>
+        <div class="welcome-icon" aria-hidden="true">🌸</div>
+        <h1 id="welcome-title" class="welcome-heading">ManasMitra</h1>
+        <p class="welcome-tagline">"Your Companion for Memory, Routine &amp; Cognitive Wellness"</p>
+        <p class="welcome-desc">
+          Simple cognitive activities, routine reminders, and warm memory support designed specifically for older adults and loved ones.
+        </p>
+
+        <div class="welcome-cta-group">
+          <button id="btn-welcome-start" class="btn btn-primary btn-large">
+            <span class="btn-emoji" aria-hidden="true">🚀</span>
+            <span>Get Started</span>
+          </button>
+          <button id="btn-welcome-login" class="btn btn-secondary btn-large">
+            <span class="btn-emoji" aria-hidden="true">🔑</span>
+            <span>Patient Login</span>
+          </button>
+        </div>
+
+        <div class="quick-demo-box">
+          <p class="quick-demo-note">Judges &amp; Quick Testing:</p>
+          <button id="btn-load-demo" class="btn btn-outline btn-compact">
+            ⚡ Load Sample Patient Profile (One-Click Demo)
+          </button>
+        </div>
+
+        <div class="welcome-features-strip">
+          <div class="feature-item">
+            <span class="feature-icon" aria-hidden="true">🧠</span>
+            <span class="feature-text">Gentle Brain Games</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon" aria-hidden="true">⏰</span>
+            <span class="feature-text">Strict 5-Min Reminders</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon" aria-hidden="true">📖</span>
+            <span class="feature-text">Precious Memory Book</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon" aria-hidden="true">👨‍👩‍👧</span>
+            <span class="feature-text">Family Audio Directory</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: REGISTRATION ==================== -->
+    <section id="view-register" class="app-view" aria-labelledby="register-title">
+      <div class="card form-card">
+        <div class="card-header">
+          <span class="header-icon" aria-hidden="true">📝</span>
+          <div>
+            <h2 id="register-title" class="card-title">Caregiver &amp; Patient Setup</h2>
+            <p class="card-subtitle">Register patient details to personalize cognitive activities.</p>
+          </div>
+        </div>
+
+        <form id="form-register" novalidate>
+          <div class="form-group">
+            <label for="reg-patient-name" class="form-label">
+              Patient Full Name <span class="required-mark">*</span>
+            </label>
+            <input type="text" id="reg-patient-name" class="form-input" placeholder="e.g., Shanti Devi" required autocomplete="name">
+            <span class="form-hint">Enter the name the patient prefers to be called.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-age" class="form-label">
+              Patient Age (Years) <span class="required-mark">*</span>
+            </label>
+            <input type="number" id="reg-age" class="form-input" min="5" max="89" placeholder="e.g., 68" required>
+            <span class="form-hint">Valid age between 5 and 89 years.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-caregiver-name" class="form-label">
+              Trusted Person / Caregiver Name <span class="required-mark">*</span>
+            </label>
+            <input type="text" id="reg-caregiver-name" class="form-input" placeholder="e.g., Rajesh Sharma (Son)" required>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-phone" class="form-label">
+              Caregiver Phone Number <span class="required-mark">*</span>
+            </label>
+            <input type="tel" id="reg-phone" class="form-input" placeholder="e.g., +91 98765 43210" required autocomplete="tel">
+          </div>
+
+          <div class="form-group">
+            <label for="reg-language" class="form-label">
+              Preferred Language <span class="required-mark">*</span>
+            </label>
+            <select id="reg-language" class="form-input form-select" required>
+              <option value="English" selected>English</option>
+              <option value="Hindi">Hindi (हिंदी)</option>
+              <option value="Assamese">Assamese (অসমীয়া)</option>
+              <option value="Bodo">Bodo (बड़ो)</option>
+              <option value="Khasi">Khasi</option>
+              <option value="Garo">Garo</option>
+              <option value="Mizo">Mizo</option>
+              <option value="Manipuri">Manipuri / Meitei (মৈতৈলোন্)</option>
+              <option value="Nagamese">Nagamese</option>
+            </select>
+            <span class="form-hint">Supports regional Indian languages for elderly comfort.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-pin" class="form-label">
+              Create 4-Digit Easy PIN <span class="required-mark">*</span>
+            </label>
+            <input type="password" id="reg-pin" class="form-input text-center pin-input" maxlength="4" pattern="[0-9]{4}" placeholder="••••" required inputmode="numeric">
+            <span class="form-hint">A simple 4-digit number for the patient to log in smoothly.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Choose Patient Avatar / Photo (Optional)</label>
+            <div class="avatar-picker" role="radiogroup" aria-label="Select avatar">
+              <label class="avatar-option">
+                <input type="radio" name="reg-avatar" value="👵" checked>
+                <span class="avatar-display">👵</span>
+                <span class="avatar-label">Grandmother</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="reg-avatar" value="👴">
+                <span class="avatar-display">👴</span>
+                <span class="avatar-label">Grandfather</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="reg-avatar" value="🌸">
+                <span class="avatar-display">🌸</span>
+                <span class="avatar-label">Flower</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="reg-avatar" value="🌿">
+                <span class="avatar-display">🌿</span>
+                <span class="avatar-label">Nature</span>
+              </label>
+            </div>
+          </div>
+
+          <div id="reg-error-msg" class="alert-box alert-error hidden" role="alert"></div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">
+              <span>Save &amp; Proceed to Login</span>
+              <span class="btn-arrow" aria-hidden="true">&#8594;</span>
+            </button>
+            <button type="button" id="btn-reg-back-login" class="btn btn-secondary">
+              Already Registered? Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: LOGIN ==================== -->
+    <section id="view-login" class="app-view" aria-labelledby="login-title">
+      <div class="card form-card login-card">
+        <div class="card-header">
+          <span class="header-icon" aria-hidden="true">🔐</span>
+          <div>
+            <h2 id="login-title" class="card-title">Patient Login</h2>
+            <p class="card-subtitle">Enter your name and 4-digit PIN.</p>
+          </div>
+        </div>
+
+        <form id="form-login" novalidate>
+          <div class="form-group">
+            <label for="login-patient-name" class="form-label">Patient Name</label>
+            <input type="text" id="login-patient-name" class="form-input" placeholder="e.g., Shanti Devi" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="login-pin" class="form-label">4-Digit PIN</label>
+            <input type="password" id="login-pin" class="form-input text-center pin-input" maxlength="4" pattern="[0-9]{4}" placeholder="••••" required inputmode="numeric">
+          </div>
+
+          <!-- Elderly-Friendly Large Numeric Keypad -->
+          <div class="keypad-container" aria-label="PIN Numeric Keypad">
+            <div class="keypad-grid">
+              <button type="button" class="keypad-btn" data-key="1">1</button>
+              <button type="button" class="keypad-btn" data-key="2">2</button>
+              <button type="button" class="keypad-btn" data-key="3">3</button>
+              <button type="button" class="keypad-btn" data-key="4">4</button>
+              <button type="button" class="keypad-btn" data-key="5">5</button>
+              <button type="button" class="keypad-btn" data-key="6">6</button>
+              <button type="button" class="keypad-btn" data-key="7">7</button>
+              <button type="button" class="keypad-btn" data-key="8">8</button>
+              <button type="button" class="keypad-btn" data-key="9">9</button>
+              <button type="button" class="keypad-btn keypad-action" data-key="clear">Clear</button>
+              <button type="button" class="keypad-btn" data-key="0">0</button>
+              <button type="button" class="keypad-btn keypad-action" data-key="backspace">⌫</button>
+            </div>
+          </div>
+
+          <div id="login-error-msg" class="alert-box alert-error hidden" role="alert"></div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">
+              <span>Sign In</span>
+              <span class="btn-arrow" aria-hidden="true">&#8594;</span>
+            </button>
+            <button type="button" id="btn-login-to-register" class="btn btn-secondary">
+              New Here? Register Caregiver
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 4: WEEKLY ASSESSMENT ==================== -->
+    <section id="view-assessment" class="app-view" aria-labelledby="assessment-title">
+      <div class="assessment-container">
+        <!-- Medical Disclaimer Banner -->
+        <div class="disclaimer-banner" role="note">
+          <span class="disclaimer-icon" aria-hidden="true">ℹ️</span>
+          <p class="disclaimer-text">
+            <strong>Important:</strong> This assessment is only a screening and personalization aid. It is not a medical diagnosis.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="assessment-header">
+            <div>
+              <span class="badge badge-teal">Weekly Cognitive Check</span>
+              <h2 id="assessment-title" class="card-title mt-2">Gentle Memory &amp; Awareness Screening</h2>
+            </div>
+            <div class="question-counter" id="assessment-counter" aria-live="polite">Question 1 of 6</div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-bar-wrap" aria-hidden="true">
+            <div id="assessment-progress-bar" class="progress-bar-fill" style="width: 16.6%;"></div>
+          </div>
+
+          <!-- Dynamic Question Host -->
+          <div id="assessment-question-body" class="assessment-body">
+            <!-- Rendered by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 5: STAGE RESULT ==================== -->
+    <section id="view-stage-result" class="app-view" aria-labelledby="stage-result-title">
+      <div class="card text-center stage-result-card">
+        <div class="stage-result-icon" id="stage-badge-icon" aria-hidden="true">🌟</div>
+        <span class="badge badge-amber text-large">Personalized Activity Plan</span>
+        <h2 id="stage-result-title" class="mt-2 text-large">Your Current Activity Stage</h2>
+
+        <div id="stage-result-name" class="stage-highlight-box">Stage I</div>
+
+        <div class="stage-explanation-box">
+          <p id="stage-result-explanation" class="stage-desc-text">
+            Continue with memory, attention, patterns and routine activities.
+          </p>
+        </div>
+
+        <div class="stage-score-detail">
+          <span>Assessment Score: </span>
+          <strong id="stage-result-score">6 / 6</strong>
+          <span class="text-muted ml-2">| Recorded today</span>
+        </div>
+
+        <div class="disclaimer-banner compact mt-4">
+          <span class="disclaimer-icon" aria-hidden="true">🩺</span>
+          <p class="disclaimer-text">
+            Activities have been adapted to your stage. You can revisit this screening next week.
+          </p>
+        </div>
+
+        <button id="btn-stage-to-dashboard" class="btn btn-primary btn-large mt-4">
+          <span>Go to Patient Dashboard</span>
+          <span class="btn-arrow" aria-hidden="true">&#8594;</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 6: PATIENT DASHBOARD ==================== -->
+    <section id="view-dashboard" class="app-view" aria-labelledby="dashboard-greeting">
+      <div class="dashboard-greeting-bar">
+        <div class="patient-avatar-badge" id="dash-avatar">👵</div>
+        <div class="greeting-info">
+          <h1 id="dashboard-greeting" class="dash-patient-name">Namaste, Shanti Devi</h1>
+          <p class="dash-subtitle">Welcome back to your companion today!</p>
+        </div>
+        <div class="current-stage-pill" id="dash-stage-pill">
+          <span class="stage-pill-dot">●</span>
+          <span id="dash-stage-label">Stage I</span>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="dashboard-stats-grid">
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">🎮</span>
+          <div class="stat-content">
+            <span class="stat-num" id="dash-games-count">0</span>
+            <span class="stat-label">Games Played</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">⭐</span>
+          <div class="stat-content">
+            <span class="stat-num" id="dash-avg-score">--</span>
+            <span class="stat-label">Avg. Game Score</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">✅</span>
+          <div class="stat-content">
+            <span class="stat-num" id="dash-task-pct">0%</span>
+            <span class="stat-label">Tasks Completed</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">📋</span>
+          <div class="stat-content">
+            <span class="stat-num text-sm-label" id="dash-assessment-status">Ready</span>
+            <span class="stat-label">Weekly Check</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Today's Reminders Section -->
+      <div class="card mb-4">
+        <div class="card-header space-between">
+          <div class="header-left">
+            <span class="header-icon" aria-hidden="true">⏰</span>
+            <div>
+              <h2 class="card-title">Today's Scheduled Reminders</h2>
+              <p class="card-subtitle">Active alerts configured for routine and wellness.</p>
+            </div>
+          </div>
+          <button id="btn-dash-goto-reminders" class="btn btn-outline btn-compact">
+            + Manage Reminders
+          </button>
+        </div>
+
+        <div id="dash-reminders-list" class="reminders-summary-list">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Main Action Cards -->
+      <div class="dashboard-actions-header">
+        <h2 class="section-title">Explore Your Companion Tools</h2>
+        <p class="section-subtitle">Tap any card below to start an activity.</p>
+      </div>
+
+      <div class="action-cards-grid">
+        <div class="action-card" tabindex="0" role="button" id="act-card-games">
+          <div class="action-card-icon" aria-hidden="true">🎮</div>
+          <h3 class="action-card-title">Cognitive Games</h3>
+          <p class="action-card-desc">Play fun, gentle brain exercises tailored to your stage.</p>
+          <span class="action-card-cta">Start Playing &#8594;</span>
+        </div>
+
+        <div class="action-card" tabindex="0" role="button" id="act-card-reminders">
+          <div class="action-card-icon" aria-hidden="true">⏰</div>
+          <h3 class="action-card-title">Reminders</h3>
+          <p class="action-card-desc">Medicine, water, breakfast, and walk alerts with strict 5-min snooze.</p>
+          <span class="action-card-cta">View Routine &#8594;</span>
+        </div>
+
+        <div class="action-card" tabindex="0" role="button" id="act-card-memory">
+          <div class="action-card-icon" aria-hidden="true">🧠</div>
+          <h3 class="action-card-title">Memory Book</h3>
+          <p class="action-card-desc">Treasured family photos, hometown trips, and favorite moments.</p>
+          <span class="action-card-cta">Open Book &#8594;</span>
+        </div>
+
+        <div class="action-card" tabindex="0" role="button" id="act-card-family">
+          <div class="action-card-icon" aria-hidden="true">👨‍👩‍👧</div>
+          <h3 class="action-card-title">Family Members</h3>
+          <p class="action-card-desc">Directory of loved ones, caregivers, and one-tap voice reading.</p>
+          <span class="action-card-cta">Meet Family &#8594;</span>
+        </div>
+
+        <div class="action-card" tabindex="0" role="button" id="act-card-ai">
+          <div class="action-card-icon" aria-hidden="true">🤖</div>
+          <h3 class="action-card-title">AI Analysis</h3>
+          <p class="action-card-desc">Personalized cognitive wellness insights computed from your activity.</p>
+          <span class="action-card-cta">View Insights &#8594;</span>
+        </div>
+
+        <div class="action-card" tabindex="0" role="button" id="act-card-ai-chat">
+          <div class="action-card-icon" aria-hidden="true">💬</div>
+          <h3 class="action-card-title">ManasMitra AI</h3>
+          <p class="action-card-desc">Ask questions about your games, routine, progress, or caregivers.</p>
+          <span class="action-card-cta">Chat with AI &#8594;</span>
+        </div>
+
+        <div class="action-card" tabindex="0" role="button" id="act-card-progress">
+          <div class="action-card-icon" aria-hidden="true">📊</div>
+          <h3 class="action-card-title">Progress Trend</h3>
+          <p class="action-card-desc">Visual score chart mapping your cognitive continuity over time.</p>
+          <span class="action-card-cta">View Chart &#8594;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 7: COGNITIVE GAMES HUB ==================== -->
+    <section id="view-games" class="app-view" aria-labelledby="games-hub-title">
+      <div class="card mb-4">
+        <div class="card-header space-between flex-wrap">
+          <div>
+            <h2 id="games-hub-title" class="card-title">Cognitive Activity Center</h2>
+            <p class="card-subtitle">Choose a game to exercise memory, attention, and recognition.</p>
+          </div>
+          <div class="stage-tag-box">
+            <span>Your Stage: </span>
+            <strong id="games-current-stage-tag" class="stage-chip">Stage I</strong>
+          </div>
+        </div>
+
+        <!-- Stage Filter Navigation -->
+        <div class="games-filter-tabs" role="tablist" aria-label="Games Stage Tabs">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Activities</button>
+          <button class="filter-tab" data-filter="stage1" role="tab" aria-selected="false">Stage I: Memory &amp; Patterns</button>
+          <button class="filter-tab" data-filter="stage2" role="tab" aria-selected="false">Stage II: Recognition</button>
+          <button class="filter-tab" data-filter="stage3" role="tab" aria-selected="false">Stage III: Familiar Objects</button>
+        </div>
+      </div>
+
+      <!-- Games List Grid -->
+      <div id="games-grid" class="games-cards-grid">
+        <!-- Rendered by JavaScript: Stage 1, 2, 3 games -->
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 8: GAME ARENA (ACTIVE PLAY CONTAINER) ==================== -->
+    <section id="view-game-arena" class="app-view" aria-labelledby="arena-game-title">
+      <div class="game-arena-wrapper">
+        <div class="game-arena-header">
+          <button id="btn-arena-exit" class="btn btn-secondary btn-compact">
+            &#8592; Back to Games Hub
+          </button>
+          <div class="arena-title-wrap">
+            <span id="arena-game-icon" class="arena-icon" aria-hidden="true">🎮</span>
+            <h2 id="arena-game-title" class="arena-title">Memory Match Cards</h2>
+          </div>
+          <div class="arena-score-counter">
+            <span>Score: </span>
+            <strong id="arena-live-score">0</strong>
+          </div>
+        </div>
+
+        <!-- Game Instructions Card -->
+        <div class="card arena-instruction-card">
+          <div class="instruction-header">
+            <span class="info-icon" aria-hidden="true">💡</span>
+            <span id="arena-game-instructions" class="instruction-text">
+              Find matching pairs of symbols by flipping over two cards at a time.
+            </span>
+          </div>
+        </div>
+
+        <!-- Game Difficulty Level Selector -->
+        <div class="arena-level-selector" role="group" aria-label="Game Difficulty Level Selection">
+          <span class="arena-level-title">Choose Difficulty:</span>
+          <div class="arena-level-buttons">
+            <button type="button" class="btn-arena-level active" data-level="1" id="btn-level-1">
+              <span class="level-badge" aria-hidden="true">⭐</span>
+              <span>Level 1 — Easy</span>
+            </button>
+            <button type="button" class="btn-arena-level" data-level="2" id="btn-level-2">
+              <span class="level-badge" aria-hidden="true">⭐⭐</span>
+              <span>Level 2 — Medium</span>
+            </button>
+            <button type="button" class="btn-arena-level" data-level="3" id="btn-level-3">
+              <span class="level-badge" aria-hidden="true">⭐⭐⭐</span>
+              <span>Level 3 — Hard</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Active Interactive Play Container -->
+        <div id="arena-interactive-play-container" class="arena-play-box">
+          <!-- Game specific layout injected here -->
+        </div>
+
+        <!-- Feedback / Result Modal inside arena -->
+        <div id="arena-feedback-modal" class="arena-feedback-overlay hidden" role="dialog" aria-modal="true">
+          <div class="arena-feedback-card">
+            <div class="feedback-stars" id="arena-feedback-stars">⭐⭐⭐</div>
+            <h3 id="arena-feedback-title" class="feedback-title">Wonderful Effort!</h3>
+            <div class="arena-feedback-level-badge" id="arena-feedback-level-badge">Level 1 — Easy Completed</div>
+            <p id="arena-feedback-msg" class="feedback-msg">You scored 100 points!</p>
+            <div class="arena-flower-growth-chip" id="arena-flower-growth-chip">
+              <span class="arena-flower-icon" id="arena-flower-chip-icon">🌸</span>
+              <span id="arena-flower-chip-text">Flower is growing!</span>
+            </div>
+            <div class="feedback-actions">
+              <button id="btn-arena-replay" class="btn btn-secondary btn-large">
+                🔄 Play Again
+              </button>
+              <button id="btn-arena-done" class="btn btn-primary btn-large">
+                ✅ Done &amp; Save Score
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 9: REMINDER SYSTEM ==================== -->
+    <section id="view-reminders" class="app-view" aria-labelledby="reminders-title">
+      <div class="reminders-container">
+        <!-- Add Reminder Card -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <span class="header-icon" aria-hidden="true">⏰</span>
+            <div>
+              <h2 id="reminders-title" class="card-title">Daily Routine &amp; Reminders</h2>
+              <p class="card-subtitle">Set up medication, meals, water, and rest alerts with gentle reminders.</p>
+            </div>
+          </div>
+
+          <!-- Quick presets for elderly convenience -->
+          <div class="preset-reminders-bar">
+            <span class="preset-label">Quick Suggestions:</span>
+            <div class="preset-chips">
+              <button type="button" class="preset-chip" data-name="Drink Water">💧 Drink Water</button>
+              <button type="button" class="preset-chip" data-name="Take Medicine">💊 Take Medicine</button>
+              <button type="button" class="preset-chip" data-name="Eat Breakfast">🥣 Eat Breakfast</button>
+              <button type="button" class="preset-chip" data-name="Go for a Walk">🚶 Go for a Walk</button>
+              <button type="button" class="preset-chip" data-name="Brush Teeth">🪥 Brush Teeth</button>
+              <button type="button" class="preset-chip" data-name="Afternoon Rest">🛌 Sleep / Rest</button>
+            </div>
+          </div>
+
+          <form id="form-add-reminder" class="reminder-form">
+            <div class="form-row">
+              <div class="form-group flex-2">
+                <label for="rem-task-name" class="form-label">
+                  Task Name <span class="required-mark">*</span>
+                </label>
+                <input type="text" id="rem-task-name" class="form-input" placeholder="e.g., Morning Blood Pressure Medicine" required>
+              </div>
+
+              <div class="form-group flex-1">
+                <label for="rem-time" class="form-label">
+                  Time <span class="required-mark">*</span>
+                </label>
+                <input type="time" id="rem-time" class="form-input" required>
+              </div>
+
+              <div class="form-group flex-1">
+                <label for="rem-repeat" class="form-label">Repeat</label>
+                <select id="rem-repeat" class="form-input form-select">
+                  <option value="daily" selected>Daily</option>
+                  <option value="once">Once</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-actions space-between">
+              <button type="submit" class="btn btn-primary btn-large">
+                <span>➕ Add Reminder</span>
+              </button>
+
+              <button type="button" id="btn-test-reminder-now" class="btn btn-outline" title="Trigger a test reminder popup immediately to inspect the snooze logic">
+                🔔 Test Reminder Popup Now
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Reminders List Card -->
+        <div class="card">
+          <div class="card-header space-between">
+            <div class="header-left">
+              <span class="header-icon" aria-hidden="true">📋</span>
+              <div>
+                <h3 class="card-title">Scheduled Reminders</h3>
+                <p class="card-subtitle">Checked every second by the central scheduler.</p>
+              </div>
+            </div>
+            <span class="scheduler-badge">
+              <span class="scheduler-pulse"></span> Scheduler Active
+            </span>
+          </div>
+
+          <div id="reminders-active-list" class="reminders-table-wrap">
+            <!-- Rendered by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 10: MEMORY BOOK ==================== -->
+    <section id="view-memory" class="app-view" aria-labelledby="memory-book-title">
+      <div class="card mb-4">
+        <div class="card-header space-between flex-wrap">
+          <div class="header-left">
+            <span class="header-icon" aria-hidden="true">📖</span>
+            <div>
+              <h2 id="memory-book-title" class="card-title">Precious Memory Book</h2>
+              <p class="card-subtitle">Treasured stories, nostalgic photographs, and memorable life events.</p>
+            </div>
+          </div>
+          <button id="btn-open-memory-modal" class="btn btn-primary">
+            <span>➕ Add New Memory</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Memories Grid -->
+      <div id="memory-cards-grid" class="memories-grid">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- Add Memory Modal -->
+      <div id="modal-add-memory" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-memory-title">
+        <div class="modal-card">
+          <div class="modal-header">
+            <h3 id="modal-memory-title" class="modal-title">Add a Special Memory</h3>
+            <button class="modal-close-btn" id="btn-close-memory-modal" aria-label="Close dialog">✕</button>
+          </div>
+
+          <form id="form-add-memory">
+            <div class="form-group">
+              <label for="mem-title" class="form-label">
+                Memory Title <span class="required-mark">*</span>
+              </label>
+              <input type="text" id="mem-title" class="form-input" placeholder="e.g., Trip to Shillong / My Grandson's Birthday" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mem-desc" class="form-label">
+                Story / Description <span class="required-mark">*</span>
+              </label>
+              <textarea id="mem-desc" class="form-input form-textarea" rows="3" placeholder="Describe this pleasant moment, people present, or favorite memories..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Choose a Nostalgic Picture</label>
+              <div class="preset-photo-selector" role="radiogroup" aria-label="Choose a memory picture">
+                <label class="photo-preset-item">
+                  <input type="radio" name="mem-preset" value="family" checked>
+                  <span class="photo-preset-preview">👨‍👩‍👧‍👦</span>
+                  <span class="photo-preset-label">Family Gathering</span>
+                </label>
+                <label class="photo-preset-item">
+                  <input type="radio" name="mem-preset" value="garden">
+                  <span class="photo-preset-preview">🌺</span>
+                  <span class="photo-preset-label">Flower Garden</span>
+                </label>
+                <label class="photo-preset-item">
+                  <input type="radio" name="mem-preset" value="travel">
+                  <span class="photo-preset-preview">🏔️</span>
+                  <span class="photo-preset-label">Hills &amp; Travel</span>
+                </label>
+                <label class="photo-preset-item">
+                  <input type="radio" name="mem-preset" value="tea">
+                  <span class="photo-preset-preview">☕</span>
+                  <span class="photo-preset-label">Morning Tea</span>
+                </label>
+              </div>
+
+              <div class="mt-3">
+                <label for="mem-custom-file" class="form-label text-sm">Or Upload Custom Photo (optional):</label>
+                <input type="file" id="mem-custom-file" class="form-input" accept="image/*">
+              </div>
+            </div>
+
+            <div class="modal-actions">
+              <button type="submit" class="btn btn-primary btn-large">Save to Memory Book</button>
+              <button type="button" class="btn btn-secondary" id="btn-cancel-memory-modal">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 11: FAMILY MEMBERS ==================== -->
+    <section id="view-family" class="app-view" aria-labelledby="family-title">
+      <div class="card mb-4">
+        <div class="card-header space-between flex-wrap">
+          <div class="header-left">
+            <span class="header-icon" aria-hidden="true">👨‍👩‍👧</span>
+            <div>
+              <h2 id="family-title" class="card-title">Family &amp; Care Circles</h2>
+              <p class="card-subtitle">Keep important contacts and trusted caregivers within easy reach.</p>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button id="btn-speak-family" class="btn btn-secondary" title="Read all family members aloud">
+              <span aria-hidden="true">🔊</span>
+              <span>Speak Family Members</span>
+            </button>
+            <button id="btn-open-family-modal" class="btn btn-primary">
+              <span>➕ Add Member</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Family Members Cards Grid -->
+      <div id="family-cards-grid" class="family-grid">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- Add Family Member Modal -->
+      <div id="modal-add-family" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-family-title">
+        <div class="modal-card">
+          <div class="modal-header">
+            <h3 id="modal-family-title" class="modal-title">Add Family or Caregiver</h3>
+            <button class="modal-close-btn" id="btn-close-family-modal" aria-label="Close dialog">✕</button>
+          </div>
+
+          <form id="form-add-family">
+            <div class="form-row">
+              <div class="form-group flex-2">
+                <label for="fam-name" class="form-label">Full Name <span class="required-mark">*</span></label>
+                <input type="text" id="fam-name" class="form-input" placeholder="e.g., Rohit Sharma" required>
+              </div>
+              <div class="form-group flex-1">
+                <label for="fam-relation" class="form-label">Relationship <span class="required-mark">*</span></label>
+                <input type="text" id="fam-relation" class="form-input" placeholder="e.g., Son / Granddaughter" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label for="fam-phone" class="form-label">Phone Number <span class="required-mark">*</span></label>
+                <input type="tel" id="fam-phone" class="form-input" placeholder="e.g., +91 98765 00000" required autocomplete="tel">
+                <span class="form-hint">Valid 7 to 15 digit telephone number.</span>
+              </div>
+              <div class="form-group flex-1">
+                <label for="fam-email" class="form-label">Email (Optional)</label>
+                <input type="email" id="fam-email" class="form-input" placeholder="e.g., rohit@example.com">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label for="fam-city" class="form-label">City</label>
+                <input type="text" id="fam-city" class="form-input" placeholder="e.g., Guwahati / Delhi">
+              </div>
+              <div class="form-group flex-1">
+                <label for="fam-role" class="form-label">Support Role <span class="required-mark">*</span></label>
+                <select id="fam-role" class="form-input form-select" required>
+                  <option value="Family" selected>Family</option>
+                  <option value="Caregiver">Caregiver</option>
+                  <option value="Doctor">Doctor</option>
+                  <option value="Community Health Worker">Community Health Worker</option>
+                  <option value="Trusted Person">Trusted Person</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group primary-caregiver-toggle-group">
+              <label class="form-checkbox-label" for="fam-is-primary">
+                <input type="checkbox" id="fam-is-primary" class="form-checkbox">
+                <span>⭐ Designate as Primary Caregiver</span>
+              </label>
+              <span class="form-hint">Designates this person as the primary emergency contact and lead caregiver.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="fam-notes" class="form-label">Notes (Optional)</label>
+              <input type="text" id="fam-notes" class="form-input" placeholder="e.g., Calls daily at 7 PM, handles medicines">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="fam-video-file">Family Video (Optional)</label>
+              <div class="fam-video-upload-control">
+                <input type="file" id="fam-video-file" accept="video/mp4,video/webm,video/ogg" style="display:none;">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <button type="button" class="btn btn-secondary" id="btn-choose-fam-video">
+                    <span>📁 Choose File</span>
+                  </button>
+                  <span id="fam-video-file-info" class="text-sm text-muted">No video chosen (MP4, WebM, OGG up to 25MB)</span>
+                  <button type="button" class="btn btn-danger btn-compact hidden" id="btn-clear-fam-video">
+                    ✕ Remove
+                  </button>
+                </div>
+              </div>
+              <div id="fam-video-error" class="fam-video-error-msg hidden" role="alert"></div>
+              <div id="fam-video-preview-wrapper" class="fam-video-preview-box hidden">
+                <p class="text-sm text-muted font-bold mb-1">Preview:</p>
+                <video id="fam-video-preview" class="fam-preview-video" controls playsinline preload="metadata">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+
+            <div class="modal-actions">
+              <button type="submit" class="btn btn-primary btn-large">Save Member</button>
+              <button type="button" class="btn btn-secondary" id="btn-cancel-family-modal">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Elderly-Friendly Family Video Player Modal -->
+      <div id="modal-family-video" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-family-video-title">
+        <div class="modal-card modal-video-card">
+          <div class="modal-header">
+            <h3 id="modal-family-video-title" class="modal-title">🎥 Family Video</h3>
+            <button class="modal-close-btn" id="btn-close-family-video-modal" aria-label="Close video player">✕</button>
+          </div>
+          <div class="modal-video-content">
+            <div class="video-container-elderly">
+              <video id="family-player-video" class="elderly-video-player" controls playsinline preload="metadata">
+                Your browser does not support the video element.
+              </video>
+            </div>
+            <div class="video-playback-actions">
+              <button type="button" id="btn-video-play-toggle" class="btn btn-primary btn-large">
+                ▶️ Play
+              </button>
+              <button type="button" id="btn-video-dismiss" class="btn btn-secondary btn-large">
+                ✕ Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 12: AI ANALYSIS ==================== -->
+    <section id="view-ai" class="app-view" aria-labelledby="ai-analysis-title">
+      <div class="ai-container">
+        <!-- Non-Medical Disclaimer Header -->
+        <div class="disclaimer-banner ai-disclaimer" role="note">
+          <span class="disclaimer-icon" aria-hidden="true">🤖</span>
+          <p class="disclaimer-text">
+            <strong>Important:</strong> AI analysis is a supportive activity insight and not a medical diagnosis. It computes patterns directly from your game scores and routine logs.
+          </p>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header space-between flex-wrap">
+            <div class="header-left">
+              <span class="header-icon" aria-hidden="true">🧠</span>
+              <div>
+                <h2 id="ai-analysis-title" class="card-title">Cognitive Activity &amp; Wellness Insights</h2>
+                <p class="card-subtitle">Algorithmic evaluation computed from your local session data.</p>
+              </div>
+            </div>
+            <span class="badge badge-teal">Frontend Analysis Engine</span>
+          </div>
+
+          <!-- Computed Metrics Grid -->
+          <div class="ai-metrics-grid">
+            <div class="ai-metric-box">
+              <span class="ai-metric-label">Total Games Completed</span>
+              <span class="ai-metric-val" id="ai-games-val">0</span>
+              <span class="ai-metric-sub">Cognitive sessions</span>
+            </div>
+
+            <div class="ai-metric-box">
+              <span class="ai-metric-label">Average Game Accuracy</span>
+              <span class="ai-metric-val" id="ai-avg-val">--</span>
+              <span class="ai-metric-sub">Performance metric</span>
+            </div>
+
+            <div class="ai-metric-box">
+              <span class="ai-metric-label">Routine Task Completion</span>
+              <span class="ai-metric-val" id="ai-task-val">0%</span>
+              <span class="ai-metric-sub">Daily adherence</span>
+            </div>
+
+            <div class="ai-metric-box">
+              <span class="ai-metric-label">Stage Recommendation</span>
+              <span class="ai-metric-val" id="ai-stage-val">Stage I</span>
+              <span class="ai-metric-sub">Adaptive tier</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Recommendations Card -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <span class="header-icon" aria-hidden="true">💡</span>
+            <div>
+              <h3 class="card-title">Personalized Recommendations</h3>
+              <p class="card-subtitle">Actionable suggestions generated from your recent cognitive data.</p>
+            </div>
+          </div>
+
+          <div id="ai-recommendations-list" class="ai-recs-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Chat Companion Invitation Card -->
+        <div class="card mb-4 ai-chat-invite-card">
+          <div class="card-header space-between flex-wrap">
+            <div class="header-left">
+              <span class="header-icon" aria-hidden="true">💬</span>
+              <div>
+                <h3 class="card-title">Have Questions About Your Insights?</h3>
+                <p class="card-subtitle">Talk with ManasMitra AI about your scores, routine, and progress.</p>
+              </div>
+            </div>
+            <button id="btn-goto-ai-chat" class="btn btn-primary" type="button">
+              <span>💬 Open AI Chat</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Planned Production Architecture Box -->
+        <div class="card architecture-card">
+          <div class="card-header">
+            <span class="header-icon" aria-hidden="true">🏗️</span>
+            <div>
+              <h3 class="card-title">Production Architecture Preview</h3>
+              <p class="card-subtitle">Prepared for enterprise healthcare scalability.</p>
+            </div>
+          </div>
+          <p class="architecture-text">
+            This prototype operates entirely client-side using privacy-first <code>localStorage</code>. For clinical enterprise deployment, ManasMitra is engineered to connect cleanly to a <strong>Java + Spring Boot REST API</strong> backed by <strong>MySQL</strong> with HIPAA-compliant de-identified ML cognitive decline predictive pipelines.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 13: PROGRESS GRAPH ==================== -->
+    <section id="view-progress" class="app-view" aria-labelledby="progress-title">
+      <div class="card mb-4">
+        <div class="card-header space-between flex-wrap">
+          <div class="header-left">
+            <span class="header-icon" aria-hidden="true">📊</span>
+            <div>
+              <h2 id="progress-title" class="card-title">Cognitive Activity Trend</h2>
+              <p class="card-subtitle">Visual tracking of game scores over time to support cognitive continuity.</p>
+            </div>
+          </div>
+          <button id="btn-refresh-graph" class="btn btn-outline btn-compact">
+            🔄 Refresh Chart
+          </button>
+        </div>
+
+        <!-- Canvas Graph Container -->
+        <div class="canvas-wrapper">
+          <canvas id="progress-canvas" width="800" height="340" role="img" aria-label="Line graph plotting cognitive game scores across attempts"></canvas>
+          <div id="graph-empty-message" class="graph-empty-overlay hidden">
+            <span class="graph-empty-icon" aria-hidden="true">🎯</span>
+            <p class="graph-empty-text">Play games to build your progress trend.</p>
+            <button id="btn-graph-play-game" class="btn btn-primary btn-compact mt-2">
+              Play a Game Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Summary Chips -->
+        <div class="graph-summary-strip">
+          <div class="graph-stat-pill">
+            <span>Highest Score: </span>
+            <strong id="graph-high-score">0</strong>
+          </div>
+          <div class="graph-stat-pill">
+            <span>Average Score: </span>
+            <strong id="graph-avg-score">0</strong>
+          </div>
+          <div class="graph-stat-pill">
+            <span>Recorded Attempts: </span>
+            <strong id="graph-total-attempts">0</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 14: MANASMITRA AI CHATBOX ==================== -->
+    <section id="view-ai-chat" class="app-view" aria-labelledby="ai-chat-title">
+      <div class="card mb-4 chatbox-card">
+        <div class="card-header space-between flex-wrap">
+          <div class="header-left">
+            <span class="header-icon" aria-hidden="true">🌸</span>
+            <div>
+              <h2 id="ai-chat-title" class="card-title">ManasMitra AI Companion</h2>
+              <p class="card-subtitle">Your warm, helpful companion for cognitive wellness, daily routine, and memories.</p>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button id="btn-clear-chat" class="btn btn-outline btn-compact" title="Reset chat conversation" type="button">
+              <span>🗑️ Clear Chat</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Non-Medical Disclaimer Header -->
+        <div class="disclaimer-banner ai-disclaimer chat-disclaimer" role="note">
+          <span class="disclaimer-icon" aria-hidden="true">🤖</span>
+          <p class="disclaimer-text">
+            <strong>Important:</strong> ManasMitra AI is a supportive companion and not a medical diagnosis tool. For medical queries or emergency symptoms, please reach out to your doctor or caregiver.
+          </p>
+        </div>
+
+        <!-- Suggested Quick Questions -->
+        <div class="chat-suggestions-container">
+          <p class="chat-suggestions-title">💡 Suggested Questions (Tap to Ask):</p>
+          <div id="chat-suggestions" class="chat-suggestions-strip">
+            <button type="button" class="chat-chip" data-question="How am I doing?">How am I doing?</button>
+            <button type="button" class="chat-chip" data-question="What games should I play?">What games should I play?</button>
+            <button type="button" class="chat-chip" data-question="What is my progress?">What is my progress?</button>
+            <button type="button" class="chat-chip" data-question="How many points do I have?">How many points do I have?</button>
+            <button type="button" class="chat-chip" data-question="Tell me about my flower.">Tell me about my flower.</button>
+            <button type="button" class="chat-chip" data-question="What reminders do I have?">What reminders do I have?</button>
+            <button type="button" class="chat-chip" data-question="Who are my caregivers?">Who are my caregivers?</button>
+          </div>
+        </div>
+
+        <!-- Chat History Area -->
+        <div id="chat-history-area" class="chat-history-box" role="log" aria-live="polite" aria-label="Chat message history">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Chat Input Form -->
+        <form id="form-ai-chat" class="chat-input-form" novalidate>
+          <div class="chat-input-bar">
+            <label for="chat-input" class="sr-only">Type a question or message for ManasMitra AI</label>
+            <input 
+              type="text" 
+              id="chat-input" 
+              class="form-input chat-input-field" 
+              placeholder="Ask me anything, or tap a suggestion above..." 
+              autocomplete="off"
+            >
+            <button type="submit" id="btn-send-chat" class="btn btn-primary btn-large">
+              <span>Send 🚀</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== CRITICAL REMINDER MODAL POPUP ==================== -->
+  <div id="reminder-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-rem-title">
+    <div class="modal-card reminder-popup-card">
+      <div class="reminder-popup-top">
+        <span class="reminder-bell-animate" aria-hidden="true">🔔</span>
+        <h2 id="modal-rem-title" class="reminder-popup-title">Reminder</h2>
+      </div>
+
+      <div class="reminder-task-highlight">
+        <p id="modal-rem-task-name" class="reminder-popup-task">Drink Water</p>
+        <span id="modal-rem-status-badge" class="badge badge-amber mt-2">Scheduled Task</span>
+      </div>
+
+      <p class="reminder-popup-prompt">Have you completed this task?</p>
+
+      <div class="reminder-popup-buttons">
+        <button id="btn-rem-yes" class="btn btn-success btn-huge">
+          <span class="btn-emoji" aria-hidden="true">✅</span>
+          <span>Yes, Completed</span>
+        </button>
+
+        <button id="btn-rem-no" class="btn btn-warning btn-huge">
+          <span class="btn-emoji" aria-hidden="true">❌</span>
+          <span>No, Remind Me in 5 Minutes</span>
+        </button>
+      </div>
+
+      <p class="reminder-policy-note">
+        Note: If deferred, you will receive exactly one 5-minute reminder today.
+      </p>
+    </div>
+  </div>
+
+  <!-- ==================== ACCESSIBLE NOTIFICATION TOAST ==================== -->
+  <div id="toast-container" class="toast-container" aria-live="assertive" aria-atomic="true"></div>
+
+  <!-- ==================== FLOWER THROWING CELEBRATION OVERLAY ==================== -->
+  <div id="flower-celebration-container" class="flower-celebration-overlay" aria-hidden="true"></div>
+
+  <!-- ==================== BOTTOM NAVIGATION DOCK ==================== -->
+  <nav class="bottom-dock" role="navigation" aria-label="Main Navigation Dock">
+    <div class="dock-container">
+      <button class="dock-item active" data-view="view-dashboard" id="dock-home" aria-label="Home Dashboard">
+        <span class="dock-icon" aria-hidden="true">🏠</span>
+        <span class="dock-label">Home</span>
+      </button>
+
+      <button class="dock-item" data-view="view-assessment" id="dock-assessment" aria-label="Weekly Assessment">
+        <span class="dock-icon" aria-hidden="true">📋</span>
+        <span class="dock-label">Assessment</span>
+      </button>
+
+      <button class="dock-item" data-view="view-games" id="dock-games" aria-label="Cognitive Games">
+        <span class="dock-icon" aria-hidden="true">🎮</span>
+        <span class="dock-label">Games</span>
+      </button>
+
+      <button class="dock-item" data-view="view-reminders" id="dock-reminders" aria-label="Reminders Routine">
+        <span class="dock-icon" aria-hidden="true">⏰</span>
+        <span class="dock-label">Reminders</span>
+      </button>
+
+      <button class="dock-item" data-view="view-memory" id="dock-memory" aria-label="Memory Book">
+        <span class="dock-icon" aria-hidden="true">🧠</span>
+        <span class="dock-label">Memory</span>
+      </button>
+
+      <button class="dock-item" data-view="view-family" id="dock-family" aria-label="Family Members">
+        <span class="dock-icon" aria-hidden="true">👨‍👩‍👧</span>
+        <span class="dock-label">Family</span>
+      </button>
+
+      <button class="dock-item" data-view="view-ai" id="dock-ai" aria-label="AI Activity Analysis">
+        <span class="dock-icon" aria-hidden="true">🤖</span>
+        <span class="dock-label">AI Analysis</span>
+      </button>
+
+      <button class="dock-item" data-view="view-ai-chat" id="dock-chat" aria-label="AI Chat Companion">
+        <span class="dock-icon" aria-hidden="true">💬</span>
+        <span class="dock-label">AI Chat</span>
+      </button>
+
+      <button class="dock-item" data-view="view-progress" id="dock-progress" aria-label="Cognitive Progress Graph">
+        <span class="dock-icon" aria-hidden="true">📊</span>
+        <span class="dock-label">Progress</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== FOOTER / SECURITY & PRIVACY ==================== -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p class="privacy-note">
+        <strong>Privacy &amp; Security Note:</strong> ManasMitra is a prototype. Personal information should be handled securely in a production system.
+      </p>
+      <div class="privacy-tags">
+        <span class="privacy-tag">🔒 Privacy-First Design</span>
+        <span class="privacy-tag">💾 Local-First Storage</span>
+        <span class="privacy-tag">☕ Secure Java/Spring Backend Planned</span>
+        <span class="privacy-tag">🛡️ De-Identified Analytics Planned</span>
+      </div>
+      <p class="footer-copy">
+        ManasMitra Cognitive Companion &bull; Built with empathy for older adults &bull; Not a certified medical diagnosis
+      </p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT APPLICATION LOGIC -->
+  <script src="script.js"></script>
+</body>
+</html>
